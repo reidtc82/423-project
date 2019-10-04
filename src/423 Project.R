@@ -44,6 +44,14 @@ a + coord_flip()
 
 
 #Location
-a <- ggplot(data = df) +
+b <- ggplot(data = df) +
     geom_bar(mapping = aes(x = DISTRICT ))+
     ylab("Count")
+
+features(df)
+
+m1 <- lm(OFFENSE_CODE ~ DISTRICT, data = df)
+summary(m1)
+
+m2 <- lm(OFFENSE_CODE ~ DISTRICT + REPORTING_AREA + MONTH + DAY_OF_WEEK + HOUR + Lat + Long, data = df)
+summary(m2)
